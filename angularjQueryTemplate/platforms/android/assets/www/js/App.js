@@ -1,12 +1,13 @@
 angular.module('App', ['ngCordova'])
     .controller('MainController', function($scope) {
-        var debugging = false,
+        var debugging = true,
             log = console.log;
         
-        $scope.menuIsOpen = false;
-        $scope.appDetails {
-            'title':'TITLE_HERE!'
+        $scope.appDetails = {
+            'title':'Angular / jQuery App!'
         }
+
+        $scope.menuIsOpen = false;
 
         //
         // After resource-loading, start the app :)
@@ -30,15 +31,22 @@ angular.module('App', ['ngCordova'])
             if ($scope.menuIsOpen){
                 $("#menu").fadeOut();
                 $scope.menuIsOpen = false;
+
             } else {
                 var r = confirm("Are you sure you want to exit?");
                 if (r == true) {
                     navigator.app.exitApp();
                 }
+
             }
+
             if (backPressed > 1){
                     navigator.app.exitApp();
             }
+        }
+
+        $scope.loadDummyData = function() {
+            initializeApp();
         }
 
 
@@ -52,6 +60,38 @@ angular.module('App', ['ngCordova'])
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*
+            Boot-up section, non-app related here
+         */
         var loadJSDependencies = function() {
             log('Loading Resource Dependencies...');
             var scriptsToLoad = [
@@ -73,7 +113,7 @@ angular.module('App', ['ngCordova'])
         var init = function() {
             if (typeof cordova === typeof 'undefined'){
                 
-                loadDummyData();//log('loading dummy data');
+                $scope.loadDummyData();//log('loading dummy data');
             } else {
                 if (!debugging){
                     initializeApp();    
@@ -84,7 +124,7 @@ angular.module('App', ['ngCordova'])
 
         $(document).ready(function() {
             if (debugging){
-                loadDummyData();
+                $scope.loadDummyData();
 
             } else {
                 // load up cordova, and startup the app
@@ -92,7 +132,6 @@ angular.module('App', ['ngCordova'])
                 init();
 
             }
-
 
             // helps resolve an issue with document selector and drag events, pulls into overflow area 
             // which shouldnt be scrollable to
@@ -112,9 +151,9 @@ angular.module('App', ['ngCordova'])
             //         
             // initNavListeners();// init listeners for app elements
 
-            // do document ready stuff
+            // do document-ready stuff
         }).on('deviceready', function() {
-            // do deviceready stuff, put all calls to plugins in here
+            // do device-ready stuff, put all calls to plugins in here
             document.addEventListener("backbutton", handleOnBackButton, false);
 
             if (!debugging){
@@ -124,17 +163,5 @@ angular.module('App', ['ngCordova'])
 
 
 
-
-
         // the end...
     });
-
-
-
-
-
-
-
-
-
-

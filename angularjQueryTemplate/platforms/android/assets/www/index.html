@@ -18,13 +18,12 @@
 
     <body ng-app='App'>
 
-        <div class='mainbody' ng-controller="MainController" >
+        <div class='mainbody' ng-controller="MainController">
             
             <div class='headerMenu'>
-                <h1 class='title' ng-show='showTitle'>
+                <h1 class='title'>
                     {{appDetails.title}}
                 </h1>
-                <!--div ng-include='"menu.html"' class='toolbox settings'></div-->
             </div>
 
         </div>
@@ -37,9 +36,20 @@
 
         <script type="text/javascript" src="js/libs/ng-cordova.min.js"></script>
 
+        <!-- Bootup, init -->
         <script type="text/javascript" src="js/App.js"></script>
 
+        <!-- View Functionality -->
+        <script type="text/javascript" src="js/view.js"></script>
+
+        <!-- Cordova Plugin Scripts -->
         <script type="text/javascript" src="js/libs/wifiwiz.js"></script>
+         <script type="text/javascript" src="js/libs/permissions.js"></script>
+
+
+        <!-- // Cordova Plugin Scripts -->
+
+
 
         <script type="text/javascript" src="js/index.js"></script>
         <!-- /only JS Libs here -->        
